@@ -37,13 +37,13 @@ header{
 }
 
 /* NAV */
-header nav{
+nav{
     display:flex;
     align-items:center;
     gap:12px;
 }
 
-header nav a{
+nav a{
    color:black;
     text-decoration:none;
     padding:9px 20px;
@@ -53,14 +53,23 @@ header nav a{
     transition:0.3s;
 }
 
-header nav a:hover{
+nav a:hover{
     background:rgba(255,255,255,0.25);
     transform:translateY(-2px);
 }
 
-header nav a.active{
+nav a.active{
     background:white;
     color:#2563eb;
+}
+
+/* HAMBURGER */
+.menu-toggle{
+    display:none;
+    font-size:30px;
+    cursor:pointer;
+    user-select:none;
+    margin-right:10px;
 }
 
 /* HERO */
@@ -73,6 +82,7 @@ header nav a.active{
     justify-content:center;
     color:white;
     text-align:center;
+    padding:20px;
 }
 
 .hero h1{
@@ -97,22 +107,75 @@ footer{
     padding:20px;
     margin-top:40px;
 }
+
+/* RESPONSIVE */
+@media (max-width:768px){
+
+    .menu-toggle{
+        display:block;
+    }
+
+    nav{
+        position:absolute;
+        top:80px;
+        left:50%;
+        transform:translateX(-50%);
+        flex-direction:column;
+        background:rgba(37, 99, 235, 0.95);
+        width:250px;
+        padding:10px;
+        border-radius:15px;
+        display:none;
+    }
+
+    nav.active{
+        display:flex;
+    }
+
+    nav a{
+        text-align:center;
+        width:100%;
+    }
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<nav>
-    <a href="index.html">HOME-Zaphir</a>
-    <a class="active" href="cours.html">Menu-Zaphir</a>
-    <a href="reseau.html">Menu-Zaphir Sélection</a>
-</nav>
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+
+    <nav id="nav">
+        <a href="index.html">HOME-Zaphir</a>
+        <a class="active" href="cours.html">Menu-Zaphir</a>
+        <a href="reseau.html">Menu-Zaphir Sélection</a>
+    </nav>
 </header>
 
 <section class="hero">
-    <h1>Best Food at special coffe </h1>
+    <h1>Best Food at special coffee</h1>
 </section>
+
+<main>
+    <h2>Bienvenue 🍽️</h2>
+    <p>
+        Ce site est un exemple de restaurant moderne avec un design responsive.
+        Il fonctionne sur PC, tablette et mobile.
+    </p>
+</main>
+
+<footer>
+    © 2026 - Zaphir Restaurant
+</footer>
+
+<script>
+const toggle = document.getElementById("menu-toggle");
+const nav = document.getElementById("nav");
+
+toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+});
+</script>
 
 </body>
 </html>
